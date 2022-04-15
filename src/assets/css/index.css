@@ -788,17 +788,27 @@ a.btn:hover {
 
 .btn-warning {
   background-color: var(--clr-warning);
-  color: hsl(var(--clr-dark));
+  color: var(--black);
 }
 
 .btn-success {
   background-color: var(--success);
-  color: hsl(var(--clr-dark));
+  color: var(--white);
+}
+
+.btn-success.outline {
+  border:  1px solid var(--success);
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.btn-success.outline:hover {
+  color: var(--black);
 }
 
 .btn-danger {
   background-color: var(--red);
-  color: hsl(var(--clr-dark));
+  color: var(--black);
 }
 
 [data-theme="dark"] .btn-warning {
@@ -1169,6 +1179,13 @@ section.page-exhibit {
   justify-content: center;
   align-items: center;
   padding-top: 6rem;
+}
+
+.section-header {
+  font-size: 32px;
+  line-height: 1;
+  padding: 2rem 0;
+  text-transform: capitalize;
 }
 
 /*****************************************************/
@@ -2538,4 +2555,11 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (max-width: 1200px) {
+}
+
+
+/* THEME MEDIA CSS */
+
+[data-theme="dark"] .navbar .logo-text:hover {
+  color: var(--black)!important;
 }
