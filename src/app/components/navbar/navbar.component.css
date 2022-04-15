@@ -1,0 +1,30 @@
+.navbar .logo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo-text {
+  font-size: 18px;
+}
+
+.link-1 i {
+  margin-right: 5px;
+}
+
+.navbar .nav-about:hover {
+  text-decoration: underline;
+}
+
+.side-nav .nav-btn {
+
+}
+
+.close-btn {
+  width: 100%;
+}

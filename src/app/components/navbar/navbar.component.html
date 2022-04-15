@@ -1,0 +1,77 @@
+<header id="top">
+  <nav class="navbar home">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <!--
+          <img src="assets/img/basketicon.svg" alt="" />
+        -->
+        <span class="logo-text"> Headphones </span>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="nav-list">
+        <form class="search-box show-md">
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Search..."
+            aria-label="Search"
+          />
+          <button class="search-btn" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+
+        <!-- Nav Links -->
+        <ul class="navlink">
+          <li class="nav-item hide-sm">
+            <a href="Cart.html" class="link-1">
+              <i class="fas fa-shopping-cart"></i>
+              <span>cart</span>
+            </a>
+          </li>
+          <li
+            id="toggle-nav"
+            class="nav-item link-2 toggler"
+            onclick="openNav()"
+          >
+            <i class="fas fa-bars"></i>
+          </li>
+        </ul>
+
+        <div id="side-nav" class="side-nav open">
+          <div class="nav-btn" onclick="closeNav()">
+            <button class="close-btn btn btn-sm btn-warning">Close</button>
+          </div>
+          <a class="links" href="index.html">
+            <span>Home</span>
+          </a>
+          <a class="links" href="Best_Seller.html">
+            <span>Best Sellers</span>
+          </a>
+          <a class="links" href="New_Arrivals.html">
+            <span>New Arrivals</span>
+          </a>
+          <a class="links" href="Cart.html">
+            <span>Cart</span>
+          </a>
+
+          <div
+            class="nav-btn no-border"
+            id="theme-toggle"
+            onclick="ToggleTheme()"
+          >
+            <span id="toggle-text">Activate Dark Mode</span
+            ><span class="slider round"></span>
+          </div>
+
+          <div class="nav-footer">
+            &copy;<span class="footer-year"></span> <br />
+            <a href="https://www.basketapi.com" target="_blank" rel="noopener noreferrer" class="nav-about"> powered by Basketapi </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
