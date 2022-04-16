@@ -16,7 +16,7 @@
 
 .product-item-image {
   height: 250px;
-  background-color: var(--product-bg);
+  background-color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,8 +34,9 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: var(--border);
   font-size: 14px;
+  border: 1px solid var(--blue-hover);
+  background-color: var(--white);
   border-radius: var(--border-radius);
   padding: 4px;
   font-weight: bold;
@@ -43,7 +44,7 @@
 
 .product-item-rating{
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
   font-size: 12px;
   padding: 4px;
