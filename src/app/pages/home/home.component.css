@@ -4,3 +4,10 @@
   gap: 2rem;
   justify-content:space-evenly;
 }
+
+
+@media (max-width: 768px) {
+  .product-item-list {
+    gap: 10px;
+  }
+}
