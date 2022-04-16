@@ -33,7 +33,7 @@
         </p>
 
         <div class="product-summary my-2">
-          <p class="text-muted text-bold">Description: </p>
+          <p class="text-muted text-bold">Description:</p>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa,
             magni voluptates et praesentium non commodi doloremque tenetur sit
@@ -43,24 +43,8 @@
             dolor cumque dignissimos laudantium?
           </p>
         </div>
-        <div class="deal-form">
-          <form autocomplete="off" class="form">
-            <div class="form-group">
-              <label for="qty" class="text-muted text-bold">Quantity: </label>
-              <input
-                type="number"
-                class="form-input mb-1"
-                step="1"
-                min="1"
-                max="300"
-                name="quantity"
-                value="1"
-              />
-            </div>
-            <div class="form-button">
-              <button class="btn btn-sm btn-primary">Add To Cart</button>
-            </div>
-          </form>
+        <div>
+          <app-qty-btn></app-qty-btn>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { NewItemsComponent } from './pages/new-items/new-items.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductBoxComponent } from './components/product-box/product-box.component';
+import { QtyBtnComponent } from './components/qty-btn/qty-btn.component';
 
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -33,7 +34,8 @@ const navRoutes: Routes = [
     CartComponent,
     NewItemsComponent,
     ProductDetailComponent,
-    ProductBoxComponent
+    ProductBoxComponent,
+    QtyBtnComponent
   ],
   imports: [
     BrowserModule,

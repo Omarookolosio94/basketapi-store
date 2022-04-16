@@ -1,0 +1,62 @@
+.qty-form-box {
+  display: flex;
+  align-items: center;
+}
+
+.qty-form {
+  display: flex;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 0.1875rem;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 6.25rem;
+  box-shadow: none;
+  margin-bottom: 20px;
+  box-shadow: var(--box-shadow);
+}
+
+.qty-form:hover {
+  -webkit-box-shadow: var(--hover-box-shadow);
+  box-shadow: var(--hover-box-shadow);
+}
+
+.qty-btn {
+  color: var(--disabled-background);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 0.9375rem;
+  outline: none;
+  padding: 0;
+  text-align: center;
+  width: 1.875rem;
+  background-color: var(--white);
+  border: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:last-of-type {
+  border-left: 0.0625rem solid var(--border);
+  border-radius: 0 0.1875rem 0.1875rem 0;
+}
+
+.decrease-qty {
+  border-right: 0.0625rem solid var(--border);
+}
+
+.qty {
+  line-height: 1.75rem;
+  white-space: nowrap;
+  width: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
