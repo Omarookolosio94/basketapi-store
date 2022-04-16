@@ -102,7 +102,7 @@ html[data-theme="dark"] {
   --success: #28a745;
   --disabled-color: #d8d8d8;
   --disabled-background: #302e30;
-  --product-bg: #d8d8d8;
+  --product-bg: #222222;
   --loading-color: rgba(255, 255, 255, 0.5);
   --border-radius: 0.3rem;
   --sm: 12px;
