@@ -11,6 +11,8 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { AboutComponent } from './pages/about/about.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { NewItemsComponent } from './pages/new-items/new-items.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductBoxComponent } from './components/product-box/product-box.component';
 
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,7 +31,9 @@ const navRoutes: Routes = [
     AboutComponent,
     NotfoundComponent,
     CartComponent,
-    NewItemsComponent
+    NewItemsComponent,
+    ProductDetailComponent,
+    ProductBoxComponent
   ],
   imports: [
     BrowserModule,
