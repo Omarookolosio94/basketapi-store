@@ -27,7 +27,7 @@
       if (!initCalled) {
         initCalled = true;
         el.classList.remove('no-js');
-        
+
         for (var i = 0; i < tabNavigationLinks.length; i++) {
           var link = tabNavigationLinks[i];
           handleClick(link, i);

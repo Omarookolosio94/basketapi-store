@@ -1,0 +1,204 @@
+<app-product-detail [title]="'Beats By Dre Headphone'"></app-product-detail>
+
+<section class="product-full-details mb-2">
+  <div class="container">
+    <div id="tabs" class="c-tabs no-js">
+      <div class="c-tabs-nav">
+        <a href="#" class="c-tabs-nav__link text-bold text-muted is-active">
+          <span>Details</span>
+        </a>
+        <a href="#" class="c-tabs-nav__link text-bold text-muted">
+          <span>Customer Review</span>
+        </a>
+        <a href="#" class="c-tabs-nav__link text-bold text-muted">
+          <span>Shipping and Returns</span>
+        </a>
+      </div>
+      <div class="c-tab is-active">
+        <button
+          class="accordion"
+          onclick="openProductAccordion(event , 'product-details')"
+          id="product-details"
+        >
+          Details
+        </button>
+        <div class="c-tab__content">
+          <p>PS4 Controller Dual Shock Absorber</p>
+          <h4>Product Feature:</h4>
+          <p>
+            BT Version: V5.0<br />Talk Range: 10m<br />Battery Capacity:
+            37mAh(earbud), 500mAh (case)<br />Battery Life: Up to 82 hours
+            standby time / 3.5 hours playtime / 3 hours talk time / Case
+            provides up to 6 full charges<br /><br /><strong>Rich Sound</strong>
+            <br />A 13mm dynamic driver produces sound with flawless accuracy
+            and treble that sparkles full of detail.<br /><br /><strong
+              >Comfortable Fit</strong
+            ><br />Earbuds are ergonomically designed to conform to the shape of
+            your ear canal. A single earbud weighs only 3g, making it easier and
+            more comfortable to wear.<br /><br /><strong>Stay Charged</strong
+            ><br />A handy and compact charging case allows you to extend 3.5
+            hours of music playtime to 24.5, so you can enjoy all-day use.<br /><br /><strong
+              >Touch Controls</strong
+            ><br />A force sensor on both earbuds allows you to effortlessly
+            answer calls and adjust music with a simple touch.<br /><br /><strong
+              >Instant Connection</strong
+            >
+            <br />After the initial setup, the earbuds automatically connect to
+            your paired device when removed from the case and disconnect when
+            returned. <br />
+          </p>
+        </div>
+      </div>
+      <div class="c-tab">
+        <button
+          class="accordion"
+          onclick="openProductAccordion(event , 'customer-review')"
+          id="customer-review"
+        >
+          Customer Review
+        </button>
+        <div class="c-tab__content">
+          <div class="review-btn">
+            <button
+              class="btn btn-sm btn-primary mb-3 float-right"
+              onclick="openModal('review-modal')"
+            >
+              Add Review
+            </button>
+          </div>
+          <div class="review clear">
+            <span>Owolabe Etobe</span>
+
+            <div class="ratings">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+
+            <p>
+              I really like the product when is the next version coming out. I
+              cannot wait
+            </p>
+          </div>
+          <div class="review">
+            <span>John Doe</span>
+
+            <div class="ratings">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+
+            <p>Great product. very nice to use</p>
+          </div>
+        </div>
+      </div>
+      <div class="c-tab">
+        <button
+          class="accordion"
+          onclick="openProductAccordion(event , 'returns')"
+          id="returns"
+        >
+          Shipping and Returns
+        </button>
+        <div class="c-tab__content">
+          <h4>Returns Policy</h4>
+          <p>
+            You may return most new, unopened items within 30 days of delivery
+            for a full refund. We'll also pay the return shipping costs if the
+            return is a result of our error (you received an incorrect or
+            defective item, etc.).
+          </p>
+          <p>
+            You should expect to receive your refund within three weeks of
+            giving your package to the return shipper, however, in many cases,
+            you will receive a refund more quickly.
+          </p>
+          <p>
+            If you need to return an item, please contact our consumer service
+            email care.ng@oraimo.com and attach your order ID and your issue. If
+            the refund is approved we will notify you via e-mail.
+          </p>
+          <h4>Shipping</h4>
+          <p>
+            We can ship to virtually any address in Nigeria. Note that if you
+            can build an order at the checkout process that's mean we cant
+            deliver the parcel to the address which you fill.
+          </p>
+          <p>
+            When you place an order, we will estimate shipping and delivery
+            dates for you based on the availability of your items and the
+            shipping options you choose. Depending on the shipping provider you
+            choose, shipping date estimates may appear on the shipping quotes
+            page.
+          </p>
+          <p>
+            Please also note that the shipping rates for many items we sell are
+            price-based. For example, if your order is over free shipping price
+            request we will exempt all shipping fees and just charge the product
+            fee.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="review-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <p class="text-capitalize text-bold">Rate Product</p>
+      <p class="close" onclick="closeModal(event , 'review-modal')">
+        <i class="fas fa-times close-modal"></i>
+      </p>
+    </div>
+    <div class="modal-body">
+      <form action="" class="form modal-form">
+        <div class="input-group">
+          <label for="">Your Rating</label>
+          <div class="range-wrap">
+            <div class="range-value" id="rangeV"></div>
+            <input id="range" type="range" min="1" max="5" value="5" step="1" />
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="">Your Name</label>
+          <input name="name" type="text" placeholder="John Doe" />
+        </div>
+        <div class="input-group">
+          <label for="">Your Email</label>
+          <input name="email" type="text" placeholder="JohnDoe@gmail.com" />
+        </div>
+        <div class="input-group">
+          <label for="">Review Content</label>
+          <textarea name="name" type="text" placeholder=""></textarea>
+        </div>
+        <div class="modal-btn-box">
+          <button class="btn btn-sm btn-primary modal-btn">
+            Submit Your Reviews
+          </button>
+          <button
+            class="btn btn-sm btn-warning mx-1 modal-btn"
+            onclick="closeModal(event , 'review-modal')"
+          >
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<section class="my-2">
+  <div class="container">
+    <p class="section-header text-center">Similar Products</p>
+
+    <div class="product-item-list">
+      <app-product-box></app-product-box>
+      <app-product-box></app-product-box>
+      <app-product-box></app-product-box>
+    </div>
+  </div>
+</section>

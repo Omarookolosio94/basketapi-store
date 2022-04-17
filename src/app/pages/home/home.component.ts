@@ -9,6 +9,8 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
 
+  showProductName: boolean = true;
+
   ngOnInit(): void {
   }
 

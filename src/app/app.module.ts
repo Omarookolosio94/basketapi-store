@@ -14,6 +14,7 @@ import { NewItemsComponent } from './pages/new-items/new-items.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductBoxComponent } from './components/product-box/product-box.component';
 import { QtyBtnComponent } from './components/qty-btn/qty-btn.component';
+import { ProductComponent } from './pages/product/product.component';
 
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const navRoutes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'cart', component: CartComponent },
   { path: 'new', component: NewItemsComponent },
+  { path: 'product/:id', component: ProductComponent },
   { path: '**', pathMatch: 'full', component: NotfoundComponent },
 ];
 
@@ -35,7 +37,8 @@ const navRoutes: Routes = [
     NewItemsComponent,
     ProductDetailComponent,
     ProductBoxComponent,
-    QtyBtnComponent
+    QtyBtnComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
