@@ -2,7 +2,7 @@
   <div class="container">
     <p class="section-header">Your Shipping Information</p>
     <div class="shipping-section-box">
-      <div class="shipping-items">
+      <div class="shipping-items mb-2">
         <div class="summary-header mb-1">
           <p class="text-bold">Order</p>
           <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
@@ -31,22 +31,24 @@
           </div>
           <div class="input-group">
             <label for="lastName">What's your name?</label>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Enter your name"
-            />
+            <input type="text" name="lastName" placeholder="Enter your name" />
           </div>
           <div class="input-group">
             <label for="address">What's the delivery address</label>
-            <input type="text" name="address" placeholder="Enter your address" />
+            <input
+              type="text"
+              name="address"
+              placeholder="Enter your address"
+            />
           </div>
-          <button
-            class="btn btn-success btn-sm btn-full"
-            onclick="Redirect(event , 'Receipt.html')"
-          >
-            Proceed to Order
-          </button>
+          <div class="form-btn">
+            <button class="btn btn-success btn-sm btn-full mr-1 mb-1">
+              Proceed to Order
+            </button>
+            <button class="btn btn-danger outline btn-sm btn-full">
+              Cancel
+            </button>
+          </div>
         </form>
       </div>
     </div>

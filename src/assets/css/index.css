@@ -844,17 +844,29 @@ a.btn:hover {
   color: var(--black);
 }
 
-.btn-success.outline:hover,
-.btn-warning.outline:hover {
-  color: var(--black);
-}
-
 .btn-danger {
   background-color: var(--red);
   color: var(--black);
 }
 
-[data-theme="dark"] .btn-warning {
+.btn-danger.outline {
+  border: 1px solid var(--red);
+  background-color: var(--white);
+  color: var(--black);
+  box-shadow: none;
+}
+
+.btn-danger.outline:hover {
+  box-shadow: var(--box-shadow);
+}
+.btn-success.outline:hover,
+.btn-warning.outline:hover,
+.btn-danger.outline:hover{
+  color: var(--black);
+}
+
+[data-theme="dark"] .btn-warning,
+[data-theme="dark"] .btn-success {
   color: white;
 }
 
@@ -2080,6 +2092,10 @@ table th {
   font-size: var(--sm);
 }
 
+.form-btn {
+  text-align: center;
+}
+
 input[type="range"] {
   -webkit-appearance: none;
   margin: 20px 0;
@@ -2476,12 +2492,11 @@ form.shipping-form {
   .shipping-section-box {
     display: block;
   }
-
   .cart-list-box .cart-list-table {
     width: 100%;
   }
 
-  .shipping-info{
+  .shipping-info {
     width: auto;
   }
   .cart-list-box .cart-summary,
@@ -2550,7 +2565,7 @@ form.shipping-form {
     width: 100%;
   }
 
-  .shipping-info{
+  .shipping-info {
     width: auto;
   }
 
