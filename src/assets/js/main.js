@@ -111,21 +111,6 @@ window.onclick = function (event) {
   }
 };
 
-function openAccordion(e, modalId) {
-  e.preventDefault();
-  var modal = document.getElementById(modalId);
-  if ($(window).width() < 992) {
-    modal.classList.toggle("active");
-    var panel = modal.nextElementSibling;
-
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + 500 + "px";
-    }
-  }
-}
-
 function openProductAccordion(e, modalId) {
   e.preventDefault();
   var modal = document.getElementById(modalId);

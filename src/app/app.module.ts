@@ -16,6 +16,8 @@ import { ProductBoxComponent } from './components/product-box/product-box.compon
 import { QtyBtnComponent } from './components/qty-btn/qty-btn.component';
 import { ProductComponent } from './pages/product/product.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +26,7 @@ const navRoutes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'new', component: NewItemsComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: '**', pathMatch: 'full', component: NotfoundComponent },
 ];
 
@@ -40,7 +43,9 @@ const navRoutes: Routes = [
     ProductBoxComponent,
     QtyBtnComponent,
     ProductComponent,
-    CartItemComponent
+    CartItemComponent,
+    CheckoutComponent,
+    CartSummaryComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,54 @@
+<section class="page-exhibit mb-2">
+  <div class="container">
+    <p class="section-header">Your Shipping Information</p>
+    <div class="shipping-section-box">
+      <div class="shipping-items">
+        <div class="summary-header mb-1">
+          <p class="text-bold">Order</p>
+          <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
+        </div>
+        <div class="cart-summary">
+          <app-cart-summary></app-cart-summary>
+          <app-cart-summary></app-cart-summary>
+          <app-cart-summary></app-cart-summary>
+        </div>
+        <div class="checkout-box summary">
+          <p class="text-bold">Total</p>
+          <p class="text-bold">&#8358; 200,000</p>
+        </div>
+      </div>
+      <div class="shipping-info">
+        <form action="" class="form shipping-form">
+          <div class="input-group">
+            <label for="email">What's your Email Address?</label>
+            <input type="text" name="email" placeholder="Enter email" />
+            <small class="danger">email is required</small>
+          </div>
+          <div class="input-group">
+            <label for="phone">What's your Phone Number</label>
+            <input type="text" name="phone" placeholder="Enter phone number" />
+            <small class="success">number passed is valid</small>
+          </div>
+          <div class="input-group">
+            <label for="lastName">What's your name?</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="input-group">
+            <label for="address">What's the delivery address</label>
+            <input type="text" name="address" placeholder="Enter your address" />
+          </div>
+          <button
+            class="btn btn-success btn-sm btn-full"
+            onclick="Redirect(event , 'Receipt.html')"
+          >
+            Proceed to Order
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
