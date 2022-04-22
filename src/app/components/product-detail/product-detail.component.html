@@ -1,11 +1,16 @@
 <section class="page-exhibit mb-2">
   <div class="container">
-    <p class="section-header">{{title}}</p>
+    <p class="section-header">{{ title }}</p>
     <div class="deal-box">
       <div class="deal-image">
         <div class="deal-main-image mb-1">
           <div>
-            <h6 *ngif="showProductName == true" class="section-header image-text">Beats By Dre Heaphone</h6>
+            <h6
+              *ngif="showProductName == true"
+              class="section-header image-text"
+            >
+              Beats By Dre Heaphone
+            </h6>
             <img src="assets/img/headphone-2.png" alt="" />
           </div>
         </div>
@@ -44,8 +49,9 @@
           </p>
         </div>
         <div>
+          <label class="mr-1 text-muted text-bold">Quantity:</label>
           <app-qty-btn></app-qty-btn>
-          <button class="btn btn-sm btn-primary">Add To Cart</button>
+          <button class="btn btn-sm btn-primary mt-1">Add To Cart</button>
         </div>
       </div>
     </div>

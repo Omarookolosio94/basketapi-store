@@ -1,6 +1,7 @@
 .qty-form-box {
   display: flex;
   align-items: center;
+  margin: 0;
 }
 
 .qty-form {
@@ -16,7 +17,6 @@
   text-align: center;
   width: 6.25rem;
   box-shadow: none;
-  margin-bottom: 20px;
   box-shadow: var(--box-shadow);
 }
 
