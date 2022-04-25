@@ -18,6 +18,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const navRoutes: Routes = [
   { path: 'new', component: NewItemsComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: '**', pathMatch: 'full', component: NotfoundComponent },
 ];
 
@@ -45,7 +47,8 @@ const navRoutes: Routes = [
     ProductComponent,
     CartItemComponent,
     CheckoutComponent,
-    CartSummaryComponent
+    CartSummaryComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

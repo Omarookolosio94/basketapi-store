@@ -5,7 +5,17 @@
       <div class="shipping-items mb-2">
         <div class="summary-header mb-1">
           <p class="text-bold text-muted">Order</p>
-          <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
+          <div class="summary-action">
+            <button
+              class="btn btn-warning outline btn-xsm"
+              onclick="openModal('checkout-modal')"
+            >
+              View Order
+            </button>
+            <a routerLink="/cart" class="btn btn-warning outline btn-xsm"
+              >Edit</a
+            >
+          </div>
         </div>
         <div class="cart-summary">
           <app-cart-summary></app-cart-summary>
@@ -54,3 +64,39 @@
     </div>
   </div>
 </section>
+
+<div id="checkout-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <p class="text-capitalize text-bold">Shopping Cart</p>
+      <p class="close" onclick="closeModal(event , 'checkout-modal')">
+        <i class="fas fa-times close-modal"></i>
+      </p>
+    </div>
+    <div class="modal-body">
+      <div class="shipping-items mb-2">
+        <div class="summary-header mb-1">
+          <p class="text-bold text-muted">Order</p>
+          <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
+        </div>
+        <div class="cart-summary">
+          <app-cart-summary></app-cart-summary>
+          <app-cart-summary></app-cart-summary>
+          <app-cart-summary></app-cart-summary>
+        </div>
+        <div class="checkout-box summary">
+          <p class="text-bold text-muted">Total</p>
+          <p class="text-bold text-muted">&#8358; 200,000</p>
+        </div>
+        <div class="modal-btn-box">
+          <button
+            class="btn btn-sm btn-warning modal-btn mt-1"
+            onclick="closeModal(event , 'checkout-modal')"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

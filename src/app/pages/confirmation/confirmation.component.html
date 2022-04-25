@@ -1,0 +1,112 @@
+<section class="page-exhibit mb-2">
+  <div class="container">
+    <p class="section-header text-muted">Your Shipping Information</p>
+    <div class="">
+      <div class="shipping-info">
+        <div class="order-id">
+          <div class="check-icon">
+            <i class="fa fa-check"></i>
+          </div>
+          <div class="order-number">
+            <span>Order #2121</span>
+            <p>Thank You Oghenemaro!</p>
+          </div>
+        </div>
+        <div class="order-details-box">
+          <div class="order-detail">
+            <h1 class="order-header text-capitalize">
+              Your Order is confirmed
+            </h1>
+            <p>
+              Thanks for ordering from XChange, we will send out your parcel as
+              soon as possible. Your order will be delivered in 4-6 business
+              days. Kindly wait for it!
+            </p>
+          </div>
+          <div class="order-detail">
+            <h1 class="order-header text-capitalize">Order updates</h1>
+            <p>You’ll get shipping and delivery updates by email.</p>
+          </div>
+          <div class="order-detail">
+            <h1 class="order-header text-capitalize">Delivery Address</h1>
+            <p>Oghenemaro Okolosio,
+            48 Vaughan Street Ebute Metta Lagos, Nigeria</p>
+          </div>
+          <div class="order-address-box">
+            <div class="order-address">
+              <div class="order-group">
+                <h1 class="order-header">Contact information</h1>
+                <p>omarookolosio94@gmail.com , +234 701 900 0000
+              </div>
+
+              <div class="order-group">
+                <h1 class="order-header">Shipping method</h1>
+                <p>Free Shipping</p>
+              </div>
+            </div>
+
+            <div class="order-address">
+              <div class="order-group">
+                <h1 class="order-header">Payment method</h1>
+                <ul class="order-payment-options">
+                  <li class="order-payment">
+                    <span class="">Cash on Delivery (COD) - ₦9,500.00</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="receipt-link">
+            <a routerLink="/home" class="btn btn-primary btn-sm mb-1">
+              Continue shopping
+            </a>
+            <button
+              class="btn btn-warning outline btn-sm"
+              onclick="openModal('checkout-modal')"
+            >
+              View Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="checkout-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <p class="text-capitalize text-bold">Order Summary</p>
+      <p class="close" onclick="closeModal(event , 'checkout-modal')">
+        <i class="fas fa-times close-modal"></i>
+      </p>
+    </div>
+    <div class="modal-body">
+      <div class="shipping-items mb-2">
+        <!--
+        <div class="summary-header mb-1">
+          <p class="text-bold text-muted">Order</p>
+            <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
+          </div>
+        -->
+        <div class="cart-summary">
+          <app-cart-summary></app-cart-summary>
+          <app-cart-summary></app-cart-summary>
+          <app-cart-summary></app-cart-summary>
+        </div>
+        <div class="checkout-box summary">
+          <p class="text-bold text-muted">Total</p>
+          <p class="text-bold text-muted">&#8358; 200,000</p>
+        </div>
+        <div class="modal-btn-box">
+          <button
+            class="btn btn-sm btn-warning modal-btn mt-1"
+            onclick="closeModal(event , 'checkout-modal')"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

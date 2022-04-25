@@ -861,7 +861,7 @@ a.btn:hover {
 }
 .btn-success.outline:hover,
 .btn-warning.outline:hover,
-.btn-danger.outline:hover{
+.btn-danger.outline:hover {
   color: var(--black);
 }
 
@@ -2189,7 +2189,6 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
 .shipping-info {
   width: 60%;
   overflow: hidden;
-  border: 1px solid var(--border);
   border-radius: var(--border-radius);
   padding: 20px 10px;
 }
@@ -2207,6 +2206,10 @@ input[type="range"]:focus::-webkit-slider-runnable-track {
   padding: 10px;
   width: 35%;
   min-width: 220px;
+}
+
+.modal .shipping-items {
+  width: auto;
 }
 
 .form-header {
@@ -2278,7 +2281,7 @@ form.shipping-form {
 }
 
 .check-icon {
-  border: 2px solid var(--blue-hover);
+  border: 2px solid var(--success);
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -2291,7 +2294,7 @@ form.shipping-form {
 
 .check-icon i {
   font-size: 20px;
-  color: var(--blue-hover);
+  color: var(--success);
 }
 
 .order-number {
@@ -2307,6 +2310,7 @@ form.shipping-form {
 .order-detail,
 .order-address-box {
   border: 1px solid var(--border);
+  border-radius: var(--border-radius);
   padding: 20px;
   margin-bottom: 2rem;
   color: var(--black);
@@ -2315,6 +2319,7 @@ form.shipping-form {
 .order-header {
   font-size: var(--nor);
   font-weight: bold;
+  color: var(--disabled-color);
 }
 
 .order-address-box {
@@ -2434,6 +2439,10 @@ form.shipping-form {
 /* 404 section */
 .error-section {
   height: 80vh;
+}
+
+.receipt-link a {
+  margin-right: 1rem;
 }
 
 @media (max-width: 460px) {
@@ -2666,9 +2675,27 @@ form.shipping-form {
   padding: 0;
 }
 
+.summary-action button {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .checkout-box {
     width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .modal .cart-summary-item {
+    display: flex !important;
+  }
+
+  .summary-action button {
+    display: block;
+  }
+
+  .summary-action a {
+    display: none;
   }
 }
 
@@ -2681,6 +2708,13 @@ form.shipping-form {
 @media (max-width: 481px) {
   .checkout-box {
     padding: 10px 5px 10px 5px;
+  }
+
+  .receipt-link a,
+  .receipt-link button {
+    width: 95%;
+    margin-right: 0;
+    padding: 0;
   }
 }
 
