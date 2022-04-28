@@ -5,23 +5,25 @@
 
 <section class="my-2">
   <div class="container">
-    <p class="section-header">Products</p>
+    <ng-container *ngIf="products.length > 0; else noProductDiv">
+      <p class="section-header">Discover Latest Products</p>
 
-    <div class="product-item-list">
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-    </div>
-    <div class="align-center mt-3">
-      <button class="my-2 btn btn-sm btn-success">
-        Load More <i class="fas fa-chevron-right ml-1 text-white text-bold"></i>
-      </button>
-    </div>
+      <div class="product-item-list">
+        <app-product-box
+          *ngFor="let product of products; index as sn"
+          [product]="product"
+        ></app-product-box>
+      </div>
+
+      <div class="align-center mt-3">
+        <button *ngIf="products" class="my-2 btn btn-sm btn-success">
+          Load More
+          <i class="fas fa-chevron-right ml-1 text-white text-bold"></i>
+        </button>
+      </div>
+    </ng-container>
+    <ng-template #noProductDiv>
+      <p class="section-header">No Products in Store Yet</p>
+    </ng-template>
   </div>
 </section>
