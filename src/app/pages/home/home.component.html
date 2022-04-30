@@ -4,7 +4,7 @@
 ></app-product-detail>
 
 <section class="my-2">
-  <div class="container">
+  <div class="container" *ngIf="!loading">
     <ng-container *ngIf="products.length > 0; else noProductDiv">
       <p class="section-header">Discover Latest Products</p>
 

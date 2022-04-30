@@ -1,10 +1,20 @@
 <div *ngIf="product" class="product-item-box">
   <div class="product-item-image">
     <div>
-      <img [src]="product.gallery ? product.gallery[0].productImageUrl: 'https://res.cloudinary.com/matrixweb/image/upload/v1641151579/apicommerce_irdaug.jpg'" alt="'product.name'" />
-      <div class="product-item-price"><span>&#8358; {{product?.unitPrice | number}}</span></div>
+      <img
+        [src]="
+          product.gallery
+            ? product.gallery[0].productImageUrl
+            : 'https://res.cloudinary.com/matrixweb/image/upload/v1641151579/apicommerce_irdaug.jpg'
+        "
+        alt="'product.name'"
+      />
+
+      <div class="product-item-price">
+        <span>&#8358; {{ product?.unitPrice | number }}</span>
+      </div>
       <div class="product-item-rating">
-        <i class="fas fa-star"></i> <span>{{product?.rating}}</span>
+        <i class="fas fa-star"></i> <span>{{ product?.rating }}</span>
       </div>
     </div>
   </div>
@@ -12,7 +22,7 @@
     <div class="product-item-description">
       <div class="product-item-name">
         <h5 class="section-header product-item-header">
-          {{product?.name}}
+          {{ product?.name }}
         </h5>
       </div>
     </div>

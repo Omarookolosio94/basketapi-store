@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -48,15 +49,16 @@ const navRoutes: Routes = [
     CartItemComponent,
     CheckoutComponent,
     CartSummaryComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot(navRoutes, { enableTracing: true }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
