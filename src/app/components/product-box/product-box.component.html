@@ -1,5 +1,5 @@
 <div *ngIf="product" class="product-item-box">
-  <div class="product-item-image">
+  <div class="product-item-image" (click)="openProduct(product.productID)">
     <div>
       <img
         [src]="
@@ -27,7 +27,8 @@
       </div>
     </div>
     <div class="cart-btn mt-2">
-      <button class="btn btn-primary btn-sm">Add To Cart</button>
+      <button *ngIf="!isInCart" class="btn btn-primary btn-sm" (click)="addToCart()">Add To Cart</button>
+      <button *ngIf="isInCart" class="btn btn-danger outline btn-sm" (click)="removeFromCart()">Remove From Cart</button>
     </div>
   </div>
 </div>

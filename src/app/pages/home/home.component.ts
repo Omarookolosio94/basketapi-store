@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Product } from 'src/app/interfaces/ProductModel';
 import { BasketapiService } from 'src/app/services/basketapi.service';
 import { SpinnerVisibilityService } from 'ng-http-loader';
+import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,11 +17,12 @@ export class HomeComponent implements OnInit {
 
   //TODO: Add general Loading state;
 
-  constructor(private apiservice: BasketapiService, private route: Router, private spinner: SpinnerVisibilityService) {}
+  constructor(private apiservice: BasketapiService, private route: Router, private spinner: SpinnerVisibilityService, private cart: CartService) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.GetProducts();
+    this.cart.setCartCount();
     this.loading = false;
   }
 

@@ -154,14 +154,8 @@
 }
 
 @media (max-width: 481px) {
-  /*
   .product-item-box {
     width: 250px;
-    height: 300px;
-  }*/
-
-  .product-item-box {
-    width: 150px;
     height: 300px;
   }
 

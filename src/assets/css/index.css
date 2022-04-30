@@ -2721,6 +2721,6 @@ form.shipping-form {
 /* THEME MEDIA CSS */
 
 [data-theme="dark"] .navbar .logo-text:hover,
-[data-theme="dark"] .qty-btn {
+[data-theme="dark"] .qty-btn,[data-theme="dark"] .cart-badge.blue-badge {
   color: var(--black) !important;
 }

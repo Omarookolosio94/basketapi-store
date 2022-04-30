@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { NavigationService } from './services/navigation.service';
+import { CartService } from './services/cart.service';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -20,6 +22,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
+
 
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -58,7 +61,7 @@ const navRoutes: Routes = [
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot(navRoutes, { enableTracing: true }),
   ],
-  providers: [],
+  providers: [NavigationService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

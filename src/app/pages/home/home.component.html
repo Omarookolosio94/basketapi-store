@@ -6,7 +6,7 @@
 <section class="my-2">
   <div class="container" *ngIf="!loading">
     <ng-container *ngIf="products.length > 0; else noProductDiv">
-      <p class="section-header">Discover Latest Products</p>
+      <p class="section-header text-center">Discover Latest Products</p>
 
       <div class="product-item-list">
         <app-product-box
@@ -23,7 +23,6 @@
       </div>
     </ng-container>
     <ng-template #noProductDiv>
-      <p class="section-header">No Products in Store Yet</p>
     </ng-template>
   </div>
 </section>

@@ -28,3 +28,18 @@
 .close-btn {
   width: 100%;
 }
+
+.cart-badge{
+  color: var(--black);
+  font-weight: bold;
+  background-color: var(--white);
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: var(--border-radius);
+}
+
+.cart-badge.blue-badge{
+  background-color: var(--blue-hover);
+  color: var(--white)
+}
+
