@@ -1,57 +1,55 @@
-<section class="page-exhibit mb-2">
+<section class="page-exhibit mb-2" *ngIf="product && product.name">
   <div class="container">
     <p class="section-header">{{ title }}</p>
-    <div class="deal-box">
-      <div class="deal-image">
+    <div class="deal-box" *ngIf="product">
+      <div class="deal-image" (click)="openProduct(product.productID)">
         <div class="deal-main-image mb-1">
           <div>
             <h6
               *ngif="showProductName == true"
               class="section-header image-text"
             >
-              Beats By Dre Heaphone
+              {{ product?.name }}
             </h6>
-            <img src="assets/img/headphone-2.png" alt="" />
+            <img
+              [src]="
+                product.gallery
+                  ? product.gallery[0].productImageUrl
+                  : 'https://res.cloudinary.com/matrixweb/image/upload/v1641151579/apicommerce_irdaug.jpg'
+              "
+              alt="'product.name'"
+            />
           </div>
         </div>
-        <div class="deal-image-list">
-          <div class="deal-img-box">
-            <img src="assets/img/headphone-2.png" alt="" />
-          </div>
-          <div class="deal-img-box">
-            <img src="assets/img/headphone-3.png" alt="" />
-          </div>
-          <div class="deal-img-box">
-            <img src="assets/img/headphone-2.png" alt="" />
+        <div class="deal-image-list" *ngIf="product.gallery && product.gallery.length > 0">
+          <div class="deal-img-box" *ngFor="let item of product.gallery.slice(0, 3);index as sn">
+            <img [src]="item.productImageUrl" alt="item.productImage" />
           </div>
         </div>
       </div>
       <div class="deal-info">
-        <a class="product-name text-muted text-bold" routerLink="/product">
-          Beats By Dre Heaphone
+        <a class="product-name text-muted text-bold" [routerLink]="['/product', product?.productID]">
+          {{product?.name}}
         </a>
 
-        <p class="product-price">&#8358; 200,000</p>
+        <p class="product-price">&#8358; {{product?.unitPrice | number }}</p>
 
         <p class="is-instock">
-          <i class="fa fa-circle"></i> In Stock <span>4.5 / 5</span>
+          <i class="fa fa-circle"></i> In Stock <span>{{product?.rating}} / 5</span>
         </p>
 
         <div class="product-summary my-2">
           <p class="text-muted text-bold">Description:</p>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa,
-            magni voluptates et praesentium non commodi doloremque tenetur sit
-            aut impedit consectetur saepe consequatur itaque quod dolor. Nemo
-            error non odit totam atque quam. Ut rem soluta accusantium qui
-            fugiat cumque consequatur voluptate. Nisi fugit dolores numquam
-            dolor cumque dignissimos laudantium?
+           {{product?.summary}}
           </p>
         </div>
         <div>
           <label class="mr-1 text-muted text-bold">Quantity:</label>
           <app-qty-btn></app-qty-btn>
-          <button class="btn btn-sm btn-primary mt-1">Add To Cart</button>
+
+          <button *ngIf="!isInCart" class="btn btn-primary btn-sm mt-1" (click)="addToCart()">Add To Cart</button>
+          <button *ngIf="isInCart" class="btn btn-danger outline btn-sm mt-1" (click)="removeFromCart()">Remove From Cart</button>
         </div>
       </div>
     </div>

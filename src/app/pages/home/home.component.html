@@ -1,6 +1,9 @@
 <app-product-detail
-  [title]="'Deal of the Day'"
+  [title]="'Random Deal'"
   [showProductName]="showProductName"
+  [product]="productOfTheDay"
+  [isInCart]="isProductOfDayInCart"
+  *ngIf="productOfTheDay"
 ></app-product-detail>
 
 <section class="my-2">

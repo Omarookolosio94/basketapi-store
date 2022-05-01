@@ -26,4 +26,8 @@ export class BasketapiService {
   GetProducts(productID: number = 0) {
     return this.http.get<GeneralResponse>(`${this.basketapi}/api/v1/products?productID=${productID}`);
   }
+
+  GetRandomProducts(count: number = 1) {
+    return this.http.get<GeneralResponse>(`${this.basketapi}/api/v1/products/random?count=${count}`);
+  }
 }

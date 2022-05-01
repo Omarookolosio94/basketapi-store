@@ -10,8 +10,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
 })
 export class ProductBoxComponent implements OnInit {
   @Input() product: Product;
-
-  isInCart: boolean = false;
+  @Input() isInCart: boolean = false;
 
   constructor(
     private navigation: NavigationService,

@@ -22,10 +22,10 @@ export interface Product {
   reviews: Review[];
   unitsInStock: number;
   summary: string;
-  escription: string; //NULLABLE
-  category: string; //NULLABLE
-  brand: string; //100 //NULLABLE
-  tag: string; //100 //NULLABLE
+  description?: string; //NULLABLE
+  category?: string; //NULLABLE
+  brand?: string; //100 //NULLABLE
+  tag?: string; //100 //NULLABLE
   gallery: ProductGallery[];
   isAvailable: boolean;
   dateAdded: Date;
