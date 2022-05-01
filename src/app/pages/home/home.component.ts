@@ -4,6 +4,9 @@ import { Product } from 'src/app/interfaces/ProductModel';
 import { BasketapiService } from 'src/app/services/basketapi.service';
 import { SpinnerVisibilityService } from 'ng-http-loader';
 import { CartService } from 'src/app/services/cart.service';
+import { environment } from 'src/environments/environment';
+declare var $: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,15 +32,18 @@ export class HomeComponent implements OnInit {
   };
   loading: boolean = false;
   isProductOfDayInCart = false;
+  currentPage: number = 1;
+  totalPage: number = 1;
+  documentCount: number = 1;
 
-  //TODO: Add general Loading state;
+  perPage = environment.perPageCount;
 
   constructor(
     private apiservice: BasketapiService,
     private route: Router,
     private spinner: SpinnerVisibilityService,
     private cart: CartService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -68,6 +74,33 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  GetProductsByPage(page: number, limit: number) {
+    this.spinner.show();
+
+    this.apiservice.GetProductsByPage(page, limit).subscribe(
+      (response) => {
+        if (response?.code == 200) {
+          let fetchedProducts: Product[] = response?.data?.products;
+
+          fetchedProducts = fetchedProducts.filter(
+            item => item.productID != this.productOfTheDay?.productID
+          );
+
+          this.products = this.products.concat(fetchedProducts);
+          this.currentPage = response?.data?.currentPage;
+          this.totalPage = response?.data?.totalPages;
+          this.documentCount = response?.data?.documentCount;
+        }
+        this.spinner.hide();
+        return;
+      },
+      (error) => {
+        this.spinner.hide();
+        return;
+      }
+    );
+  }
+
   GetRandomProducts() {
     this.spinner.show();
 
@@ -79,7 +112,8 @@ export class HomeComponent implements OnInit {
             this.productOfTheDay.productID
           );
 
-          this.GetProducts(this.productOfTheDay?.productID);
+          //this.GetProducts(this.productOfTheDay?.productID);
+          this.GetProductsByPage(1, this.perPage);
         } else {
           this.spinner.hide();
           return;
@@ -90,5 +124,10 @@ export class HomeComponent implements OnInit {
         return;
       }
     );
+  }
+
+  LoadMorePage() {
+    if (this.currentPage == this.totalPage) return;
+    this.GetProductsByPage(this.currentPage + 1, this.perPage);
   }
 }

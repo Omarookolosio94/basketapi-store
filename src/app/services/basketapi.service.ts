@@ -27,6 +27,10 @@ export class BasketapiService {
     return this.http.get<GeneralResponse>(`${this.basketapi}/api/v1/products?productID=${productID}`);
   }
 
+  GetProductsByPage(page: number = 1, limit: number = 8) {
+    return this.http.get<GeneralResponse>(`${this.basketapi}/api/v1/products/page?limit=${limit}&page=${page}`);
+  }
+
   GetRandomProducts(count: number = 1) {
     return this.http.get<GeneralResponse>(`${this.basketapi}/api/v1/products/random?count=${count}`);
   }

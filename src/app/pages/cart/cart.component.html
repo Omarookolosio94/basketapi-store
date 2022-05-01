@@ -3,9 +3,7 @@
     <p class="section-header">Your Cart</p>
     <div class="cart-box">
       <div class="cart">
-        <app-cart-item></app-cart-item>
-        <app-cart-item></app-cart-item>
-        <app-cart-item></app-cart-item>
+        <app-cart-item *ngFor="let product of cart; index as sn" [product]="product"></app-cart-item>
       </div>
       <div class="checkout-box">
         <p class="text-bold text-muted">Total: &#8358; 200,000</p>

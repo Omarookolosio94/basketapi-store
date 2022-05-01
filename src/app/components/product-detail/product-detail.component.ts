@@ -12,7 +12,6 @@ export class ProductDetailComponent implements OnInit {
   @Input() title: string;
   @Input() showProductName: boolean;
   @Input() product: Product;
-
   @Input() isInCart: boolean = false;
 
   constructor(
@@ -43,4 +42,6 @@ export class ProductDetailComponent implements OnInit {
       this.cart.setCartCount();
     }
   }
+
+  //TODO: Logic to increase and decrease cart item
 }
