@@ -18,13 +18,14 @@
           </div>
         </div>
         <div class="cart-summary">
-          <app-cart-summary></app-cart-summary>
-          <app-cart-summary></app-cart-summary>
-          <app-cart-summary></app-cart-summary>
+          <app-cart-summary
+            *ngFor="let product of cart"
+            [cart]="product"
+          ></app-cart-summary>
         </div>
         <div class="checkout-box summary">
           <p class="text-bold text-muted">Total</p>
-          <p class="text-bold text-muted">&#8358; 200,000</p>
+          <p class="text-bold text-muted">&#8358; {{ cartTotal | number }}</p>
         </div>
       </div>
       <div class="shipping-info">
@@ -50,12 +51,16 @@
               name="address"
               placeholder="Enter your address"
             />
+            <small class="text-muted">Address should include No. Street Name City and State. E.G 48 Vaughan Street Ebute Metta Lagos</small>
           </div>
-          <div class="form-btn">
+          <div class="form-btn mt-1">
             <button class="btn btn-success btn-sm btn-full mr-1 mb-1">
               Proceed to Order
             </button>
-            <button class="btn btn-danger outline btn-sm btn-full">
+            <button
+              routerLink="/cart"
+              class="btn btn-danger outline btn-sm btn-full"
+            >
               Cancel
             </button>
           </div>
@@ -80,13 +85,14 @@
           <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
         </div>
         <div class="cart-summary">
-          <app-cart-summary></app-cart-summary>
-          <app-cart-summary></app-cart-summary>
-          <app-cart-summary></app-cart-summary>
+          <app-cart-summary
+            *ngFor="let product of cart"
+            [cart]="product"
+          ></app-cart-summary>
         </div>
         <div class="checkout-box summary">
           <p class="text-bold text-muted">Total</p>
-          <p class="text-bold text-muted">&#8358; 200,000</p>
+          <p class="text-bold text-muted">&#8358; {{ cartTotal | number }}</p>
         </div>
         <div class="modal-btn-box">
           <button

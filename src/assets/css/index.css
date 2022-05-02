@@ -1352,7 +1352,7 @@ section.page-exhibit {
 }
 
 .is-instock i {
-  color: var(--success);
+  color: var(--clr-warning);
   font-size: 12px;
 }
 

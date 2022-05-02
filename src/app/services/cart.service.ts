@@ -151,8 +151,36 @@ export class CartService {
   }
 
   calculateCartTotal() {
+    var cart = this.getCart();
 
+    if (cart.length > 0) {
+      let total = 0;
+
+      cart.forEach((cartItem) => {
+        total = total + (cartItem.quantity * cartItem?.product?.unitPrice);
+      });
+
+      return total;
+    } else {
+      return 0;
+    }
   }
 
-  //TODO: Update Cart Functionality to increase or decrease QTY
+  calculateCartTotalWithCart(cart: Cart[]) {
+    if (cart.length > 0) {
+      let total = 0;
+
+      cart.forEach((cartItem) => {
+        total = total + (cartItem.quantity * cartItem?.product?.unitPrice);
+      });
+
+      return total;
+    } else {
+      return 0;
+    }
+  }
+
+  emptyCart() {
+    localStorage.setItem('CART', JSON.stringify([]));
+  }
 }

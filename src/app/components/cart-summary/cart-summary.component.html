@@ -1,16 +1,23 @@
 <div class="cart-summary-item">
   <div class="cart-summary-product-detail">
     <div class="cart-summary-img">
-      <img src="assets/img/headphone-2.png" alt="" />
+      <img
+        [src]="
+          cart && cart.product.gallery
+            ? cart.product.gallery[0].productImageUrl
+            : 'https://res.cloudinary.com/matrixweb/image/upload/v1641151579/apicommerce_irdaug.jpg'
+        "
+        alt="'cart.product.name'"
+      />
     </div>
     <div class="cart-summary-item-info">
       <p class="cart-summary-item-name text-muted text-bold">
-        Beats By DRE headphones
+        {{ cart.product?.name }}
       </p>
-      <p class="cart-summary-item-price">&#8358; 200,000</p>
+      <p class="cart-summary-item-price">
+        &#8358; {{ cart.product?.unitPrice | number }}
+      </p>
     </div>
   </div>
-  <div class="cart-summary-qty">
-    X <span>1</span>
-  </div>
+  <div class="cart-summary-qty">X <span>{{cart.quantity}}</span></div>
 </div>

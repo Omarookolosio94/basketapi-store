@@ -15,7 +15,7 @@ export class CartItemComponent implements OnInit {
 
   @Output() removeCartItem: EventEmitter<Cart> = new EventEmitter();
 
-  constructor(private cartService: CartService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
