@@ -2,18 +2,17 @@
   <div class="qty-form">
     <button
       class="qty-btn decrease-qty"
-      name="decrement"
       type="submit"
-      value="0"
+      (click)="changeQty(false)"
+      [disabled]="Quantity == 1"
     >
       -
     </button>
-    <div class="qty">1</div>
+    <div class="qty">{{ Quantity }}</div>
     <button
       class="qty-btn increase-qty"
-      name="increment"
       type="submit"
-      value="1"
+      (click)="changeQty(true)"
     >
       +
     </button>

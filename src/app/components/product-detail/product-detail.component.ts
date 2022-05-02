@@ -13,23 +13,28 @@ export class ProductDetailComponent implements OnInit {
   @Input() showProductName: boolean;
   @Input() product: Product;
   @Input() isInCart: boolean = false;
+  @Input() orderedQty: number = 1;
 
   constructor(
     private navigation: NavigationService,
-    private cart: CartService
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
-    this.isInCart = this.cart.isInCart(this.product?.productID);
+    this.isInCart = this.cartService.isInCart(this.product?.productID);
+    var cart = this.cartService.getItemFromCart(this.product?.productID);
+    if (cart.length > 0) {
+      this.orderedQty = cart[0].quantity;
+    }
   }
 
   openProduct(productID: any) {
     this.navigation.navigateTo(`/product/${productID}`);
   }
 
-  addToCart() {
-    this.isInCart = this.cart.addToCart(this.product);
-    this.cart.setCartCount();
+  addToCart(qty: number = this.orderedQty) {
+    this.isInCart = this.cartService.addToCart(this.product, qty);
+    this.cartService.setCartCount();
   }
 
   removeFromCart() {
@@ -38,10 +43,17 @@ export class ProductDetailComponent implements OnInit {
         `You are about to remove ${this.product?.name} from your cart?`
       )
     ) {
-      this.isInCart = !this.cart.removeFromCart(this.product?.productID);
-      this.cart.setCartCount();
+      this.isInCart = !this.cartService.removeFromCart(this.product?.productID);
+      this.cartService.setCartCount();
     }
   }
 
-  //TODO: Logic to increase and decrease cart item
+  updateQty(qty: number) {
+    if (this.isInCart) {
+      this.cartService.updateQuantity(this.product, qty);
+      this.orderedQty = qty;
+    } else {
+      this.orderedQty = qty;
+    }
+  }
 }

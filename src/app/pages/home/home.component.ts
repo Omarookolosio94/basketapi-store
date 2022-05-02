@@ -37,18 +37,19 @@ export class HomeComponent implements OnInit {
   documentCount: number = 1;
 
   perPage = environment.perPageCount;
+  orderedQuantity: number = 1;
 
   constructor(
     private apiservice: BasketapiService,
     private route: Router,
     private spinner: SpinnerVisibilityService,
-    private cart: CartService
-  ) { }
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.GetRandomProducts();
-    this.cart.setCartCount();
+    this.cartService.setCartCount();
     this.loading = false;
   }
 
@@ -83,7 +84,7 @@ export class HomeComponent implements OnInit {
           let fetchedProducts: Product[] = response?.data?.products;
 
           fetchedProducts = fetchedProducts.filter(
-            item => item.productID != this.productOfTheDay?.productID
+            (item) => item.productID != this.productOfTheDay?.productID
           );
 
           this.products = this.products.concat(fetchedProducts);
@@ -101,6 +102,15 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  GetQuantity(productID: number) {
+    var cart = this.cartService.getItemFromCart(productID);
+    if (cart.length > 0) {
+      return cart[0].quantity;
+    } else {
+      return 1;
+    }
+  }
+
   GetRandomProducts() {
     this.spinner.show();
 
@@ -108,10 +118,11 @@ export class HomeComponent implements OnInit {
       (response) => {
         if (response?.code == 200) {
           this.productOfTheDay = response?.data[0];
-          this.isProductOfDayInCart = this.cart.isInCart(
+          this.isProductOfDayInCart = this.cartService.isInCart(
             this.productOfTheDay.productID
           );
 
+          this.orderedQuantity = this.GetQuantity(response?.data[0].productID);
           //this.GetProducts(this.productOfTheDay?.productID);
           this.GetProductsByPage(1, this.perPage);
         } else {

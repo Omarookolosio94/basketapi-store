@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Cart } from '../interfaces/CartModel';
 import { Product } from '../interfaces/ProductModel';
 declare var $: any;
 
@@ -6,11 +7,11 @@ declare var $: any;
   providedIn: 'root',
 })
 export class CartService {
-  constructor() { }
+  constructor() {}
 
   getCart() {
     let cartSession: any = localStorage.getItem('CART');
-    let cart: Product[] = [];
+    let cart: Cart[] = [];
 
     if (cartSession == null || cartSession == '') {
       return cart;
@@ -20,15 +21,18 @@ export class CartService {
     }
   }
 
-  addToCart(product: Product) {
+  addToCart(product: Product, qty: number = 1) {
     //get existing cart
     let cartSession: any = localStorage.getItem('CART');
-    let cart: Product[] = [];
-
-    //TODO: Update cart count
+    let cart: Cart[] = [];
 
     if (cartSession == null || cartSession == '') {
-      cart.push(product);
+      cart.push({
+        product: product,
+        productID: product?.productID,
+        quantity: qty,
+      });
+
       localStorage.setItem('CART', JSON.stringify(cart));
     } else {
       cart = JSON.parse(cartSession);
@@ -36,7 +40,12 @@ export class CartService {
       if (this.isInCart(product?.productID)) {
         alert('Product already in cart');
       } else {
-        cart.push(product);
+        cart.push({
+          product: product,
+          productID: product?.productID,
+          quantity: qty,
+        });
+
         localStorage.setItem('CART', JSON.stringify(cart));
       }
     }
@@ -45,7 +54,7 @@ export class CartService {
 
   isInCart(productID: number) {
     let cartSession: any = localStorage.getItem('CART');
-    let cart: Product[] = [];
+    let cart: Cart[] = [];
 
     if (cartSession == null || cartSession == '') {
       return false;
@@ -62,7 +71,7 @@ export class CartService {
 
   removeFromCart(productID: number) {
     let cartSession: any = localStorage.getItem('CART');
-    let cart: Product[] = [];
+    let cart: Cart[] = [];
 
     if (cartSession == null || cartSession == '') {
       return true;
@@ -75,7 +84,7 @@ export class CartService {
   }
 
   setCartCount(cartSession: any = localStorage.getItem('CART')) {
-    let cart: Product[] = [];
+    let cart: Cart[] = [];
 
     if (cartSession == null || cartSession == '') {
       $('#cart-count').css('opacity', 0);
@@ -100,6 +109,49 @@ export class CartService {
         return;
       }
     }
+  }
+
+  getItemFromCart(productID: number) {
+    if (!this.isInCart(productID)) {
+      return [];
+    } else {
+      let cartSession: any = localStorage.getItem('CART');
+      let cart: Cart[] = [];
+
+      if (cartSession) {
+        cart = JSON.parse(cartSession);
+
+        let product = cart.filter((item) => item.productID == productID);
+        return product;
+      }
+      return [];
+    }
+  }
+
+  updateQuantity(product: Product, qty: number) {
+    if (!this.isInCart(product?.productID)) {
+      return;
+    } else {
+      let cartSession: any = localStorage.getItem('CART');
+      let cart: Product[] = [];
+
+      if (cartSession) {
+        cart = JSON.parse(cartSession);
+
+        var newCart = cart.map((item) =>
+          item.productID == product?.productID
+            ? { ...item, quantity: qty }
+            : item
+        );
+
+        localStorage.setItem('CART', JSON.stringify(newCart));
+      }
+      return;
+    }
+  }
+
+  calculateCartTotal() {
+
   }
 
   //TODO: Update Cart Functionality to increase or decrease QTY

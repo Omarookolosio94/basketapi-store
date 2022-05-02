@@ -2,20 +2,29 @@
   <div class="cart-product-detail">
     <div class="cart-img">
       <img
-              [src]="
-                product.gallery
-                  ? product.gallery[0].productImageUrl
-                  : 'https://res.cloudinary.com/matrixweb/image/upload/v1641151579/apicommerce_irdaug.jpg'
-              "
-              alt="'product.name'"
-            />
+        [src]="
+          cart && cart.product.gallery
+            ? cart.product.gallery[0].productImageUrl
+            : 'https://res.cloudinary.com/matrixweb/image/upload/v1641151579/apicommerce_irdaug.jpg'
+        "
+        alt="'product.name'"
+      />
     </div>
+
     <div class="cart-item-info">
-      <p class="cart-item-name text-muted text-bold">{{product?.name}}</p>
-      <p class="cart-item-price">&#8358; {{product?.unitPrice | number}}</p>
+      <p class="cart-item-name text-muted text-bold">
+        {{ cart.product?.name }}
+      </p>
+      <p class="cart-item-price">
+        &#8358; {{ cart.product?.unitPrice | number }}
+      </p>
     </div>
   </div>
   <div class="cart-qty">
-    <app-qty-btn></app-qty-btn>
+    <app-qty-btn
+      (changeQuantity)="updateQty($event)"
+      [Quantity]="cart.quantity"
+    ></app-qty-btn>
+    <button class="btn btn-xsm btn-danger qty-btn-danger outline" (click)="removeItemFromCart()">Delete</button>
   </div>
 </div>

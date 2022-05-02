@@ -46,7 +46,7 @@
         </div>
         <div>
           <label class="mr-1 text-muted text-bold">Quantity:</label>
-          <app-qty-btn></app-qty-btn>
+          <app-qty-btn (changeQuantity)="updateQty($event)" [Quantity]="orderedQty"></app-qty-btn>
 
           <button *ngIf="!isInCart" class="btn btn-primary btn-sm mt-1" (click)="addToCart()">Add To Cart</button>
           <button *ngIf="isInCart" class="btn btn-danger outline btn-sm mt-1" (click)="removeFromCart()">Remove From Cart</button>

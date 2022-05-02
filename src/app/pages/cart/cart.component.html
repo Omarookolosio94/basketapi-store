@@ -1,13 +1,27 @@
 <section class="page-exhibit">
   <div class="container">
     <p class="section-header">Your Cart</p>
-    <div class="cart-box">
+    <div class="cart-box" *ngIf="cart.length > 0">
       <div class="cart">
-        <app-cart-item *ngFor="let product of cart; index as sn" [product]="product"></app-cart-item>
+        <app-cart-item
+          *ngFor="let product of cart; index as sn"
+          (changeQuantity)="updateQty($event)"
+          (removeCartItem)="removeFromCart($event)"
+          [cart]="product"
+        ></app-cart-item>
       </div>
       <div class="checkout-box">
-        <p class="text-bold text-muted">Total: &#8358; 200,000</p>
+        <p class="text-bold text-muted" id="cart-total">
+          Total: &#8358; 200,000
+        </p>
         <button class="btn btn-primary btn-sm">Proceed To Checkout</button>
+      </div>
+    </div>
+
+    <div class="cart-box" *ngIf="cart.length < 1">
+      <div class="cart">
+        <p>No Item in cart</p>
+        <a href="/home" class="btn btn-primary btn-sm"> Continue Shopping </a>
       </div>
     </div>
   </div>
