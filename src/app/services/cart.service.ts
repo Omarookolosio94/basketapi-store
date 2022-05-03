@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../interfaces/CartModel';
 import { Product } from '../interfaces/ProductModel';
+import { BasketapiService } from './basketapi.service';
 declare var $: any;
 
 @Injectable({
@@ -141,6 +142,28 @@ export class CartService {
         var newCart = cart.map((item) =>
           item.productID == product?.productID
             ? { ...item, quantity: qty }
+            : item
+        );
+
+        localStorage.setItem('CART', JSON.stringify(newCart));
+      }
+      return;
+    }
+  }
+
+  updateProductInCart(product: Product) {
+    if (!this.isInCart(product?.productID)) {
+      return;
+    } else {
+      let cartSession: any = localStorage.getItem('CART');
+      let cart: Product[] = [];
+
+      if (cartSession) {
+        cart = JSON.parse(cartSession);
+
+        var newCart = cart.map((item) =>
+          item.productID == product?.productID
+            ? { ...item, product: product }
             : item
         );
 

@@ -30,6 +30,6 @@ export class CheckoutComponent implements OnInit {
 
   //TODO: Create CheckOut Logic
 
-  //TODO: Always update product in cart with api call to database;
+  //TODO: Always update product in cart with api
 
 }

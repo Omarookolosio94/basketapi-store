@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="cart-box" *ngIf="cart.length < 1">
+    <div class="cart-box" *ngIf="!loading && cart.length < 1">
       <div class="cart">
         <p>No Item in cart</p>
         <a routerLink="/home" class="btn btn-primary btn-sm"> Continue Shopping </a>
