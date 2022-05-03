@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   basketapi: '/api',
-  perPageCount: 8
+  perPageCount: 5
 };
 
 /*
