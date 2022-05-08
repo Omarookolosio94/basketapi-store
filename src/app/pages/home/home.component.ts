@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
+  
   GetProductsByPage(page: number, limit: number) {
     this.spinner.show();
 

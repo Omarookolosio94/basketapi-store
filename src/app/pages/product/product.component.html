@@ -1,6 +1,13 @@
-<app-product-detail [title]="'Beats By Dre Headphone'"></app-product-detail>
+<app-product-detail
+  [title]="product.name"
+  [showProductName]="showProductName"
+  [product]="product"
+  [isInCart]="isProductInCart"
+  [orderedQty]="orderedQuantity"
+  *ngIf="product"
+></app-product-detail>
 
-<section class="product-full-details mb-2">
+<section class="product-full-details mb-2" *ngIf="product">
   <div class="container">
     <div id="tabs" class="c-tabs no-js">
       <div class="c-tabs-nav">
@@ -23,30 +30,7 @@
           Details
         </button>
         <div class="c-tab__content">
-          <p>PS4 Controller Dual Shock Absorber</p>
-          <h4>Product Feature:</h4>
-          <p>
-            BT Version: V5.0<br />Talk Range: 10m<br />Battery Capacity:
-            37mAh(earbud), 500mAh (case)<br />Battery Life: Up to 82 hours
-            standby time / 3.5 hours playtime / 3 hours talk time / Case
-            provides up to 6 full charges<br /><br /><strong>Rich Sound</strong>
-            <br />A 13mm dynamic driver produces sound with flawless accuracy
-            and treble that sparkles full of detail.<br /><br /><strong
-              >Comfortable Fit</strong
-            ><br />Earbuds are ergonomically designed to conform to the shape of
-            your ear canal. A single earbud weighs only 3g, making it easier and
-            more comfortable to wear.<br /><br /><strong>Stay Charged</strong
-            ><br />A handy and compact charging case allows you to extend 3.5
-            hours of music playtime to 24.5, so you can enjoy all-day use.<br /><br /><strong
-              >Touch Controls</strong
-            ><br />A force sensor on both earbuds allows you to effortlessly
-            answer calls and adjust music with a simple touch.<br /><br /><strong
-              >Instant Connection</strong
-            >
-            <br />After the initial setup, the earbuds automatically connect to
-            your paired device when removed from the case and disconnect when
-            returned. <br />
-          </p>
+          {{ product?.description }}
         </div>
       </div>
       <div class="c-tab">
@@ -66,32 +50,17 @@
               Add Review
             </button>
           </div>
-          <div class="review clear">
-            <span>Owolabe Etobe</span>
+          <div
+            class="review clear"
+            *ngFor="let review of product.reviews; index as sn"
+          >
+            <span>{{ review.customerName }}</span>
 
-            <div class="ratings">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
+            <div class="ratings">{{ review.rating }} / 5</div>
 
             <p>
-              I really like the product when is the next version coming out. I
-              cannot wait
+              {{ review.customerReview }}
             </p>
-          </div>
-          <div class="review">
-            <span>John Doe</span>
-
-            <div class="ratings">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-            </div>
-
-            <p>Great product. very nice to use</p>
           </div>
         </div>
       </div>
@@ -190,15 +159,47 @@
     </div>
   </div>
 </div>
+<!--
+  <section class="my-2">
+    <div class="container">
+      <p class="section-header text-center">Similar Products</p>
 
-<section class="my-2">
-  <div class="container">
-    <p class="section-header text-center">Similar Products</p>
-
-    <div class="product-item-list mb-1">
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
-      <app-product-box></app-product-box>
+      <div class="product-item-list mb-1">
+        <app-product-box></app-product-box>
+        <app-product-box></app-product-box>
+        <app-product-box></app-product-box>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var myTabs = tabs({
+      el: "#tabs",
+      tabNavigationLinks: ".c-tabs-nav__link",
+      tabContentContainers: ".c-tab",
+    });
+
+    myTabs.init();
+
+    const range = document.getElementById("range"),
+      rangeV = document.getElementById("rangeV"),
+      setValue = () => {
+        const newValue = Number(
+            ((range.value - range.min) * 100) / (range.max - range.min)
+          ),
+          newPosition = 10 - newValue * 0.2;
+        rangeV.innerHTML = `<span>${range.value}</span>`;
+        rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
+      };
+    document.addEventListener("DOMContentLoaded", setValue);
+    range.addEventListener("input", setValue);
+
+    var span = document.getElementsByClassName("close-modal")[0];
+    span.onclick = function () {
+      modal.style.display = "none";
+      modal = "";
+    };
+  });
+</script>
