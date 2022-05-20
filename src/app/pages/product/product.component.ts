@@ -33,7 +33,6 @@ export class ProductComponent implements OnInit {
           this.product = response.data;
           this.isProductInCart = this.cartService.isInCart(response?.data?.productID);
           this.orderedQuantity = this.GetQuantity(response?.data?.productID);
-          this.cartService.setCartCount();
         }
         return;
       },
@@ -51,4 +50,6 @@ export class ProductComponent implements OnInit {
       return 1;
     }
   }
+
+  //TODO: Add comments to product functionality
 }

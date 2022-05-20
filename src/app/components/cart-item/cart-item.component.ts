@@ -4,6 +4,7 @@ import { Cart } from 'src/app/interfaces/CartModel';
 import { Product } from 'src/app/interfaces/ProductModel';
 import { BasketapiService } from 'src/app/services/basketapi.service';
 import { CartService } from 'src/app/services/cart.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -17,8 +18,7 @@ export class CartItemComponent implements OnInit {
 
   @Output() removeCartItem: EventEmitter<Cart> = new EventEmitter();
 
-  constructor () {
-  }
+  constructor(private navigation: NavigationService) {}
 
   ngOnInit(): void {}
 
@@ -26,11 +26,15 @@ export class CartItemComponent implements OnInit {
     this.changeQuantity.emit({
       quantity: qty,
       product: this.cart.product,
-      productID: this.cart.productID
+      productID: this.cart.productID,
     });
   }
 
   removeItemFromCart() {
     this.removeCartItem.emit(this.cart);
+  }
+
+  openProduct(productID: any) {
+    this.navigation.navigateTo(`/product/${productID}`);
   }
 }

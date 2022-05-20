@@ -9,71 +9,48 @@
 
 <section class="product-full-details mb-2" *ngIf="product">
   <div class="container">
-    <div id="tabs" class="c-tabs no-js">
-      <div class="c-tabs-nav">
-        <a href="#" class="c-tabs-nav__link text-bold text-muted is-active">
-          <span>Details</span>
-        </a>
-        <a href="#" class="c-tabs-nav__link text-bold text-muted">
-          <span>Customer Review</span>
-        </a>
-        <a href="#" class="c-tabs-nav__link text-bold text-muted">
-          <span>Shipping and Returns</span>
-        </a>
-      </div>
-      <div class="c-tab is-active">
-        <button
-          class="accordion"
-          onclick="openProductAccordion(event , 'product-details')"
-          id="product-details"
-        >
-          Details
-        </button>
-        <div class="c-tab__content">
-          {{ product?.description }}
+    <div class="main-detail">
+      <button class="accordion" onclick="openAccordion(event)">Details</button>
+      <div class="panel mb-2">
+        <div class="panel-box">
+          <p>
+            {{product.description ?  product?.description: product?.summary }}
+          </p>
         </div>
       </div>
-      <div class="c-tab">
-        <button
-          class="accordion"
-          onclick="openProductAccordion(event , 'customer-review')"
-          id="customer-review"
-        >
-          Customer Review
-        </button>
-        <div class="c-tab__content">
+
+      <button class="accordion" onclick="openAccordion(event)">
+        Customer Review
+      </button>
+      <div class="panel mb-2">
+        <div class="panel-box">
           <div class="review-btn">
             <button
-              class="btn btn-sm btn-primary mb-3 float-right"
+              class="btn btn-sm btn-primary mb-1"
               onclick="openModal('review-modal')"
             >
               Add Review
             </button>
           </div>
           <div
-            class="review clear"
+            class="review"
             *ngFor="let review of product.reviews; index as sn"
           >
-            <span>{{ review.customerName }}</span>
-
-            <div class="ratings">{{ review.rating }} / 5</div>
-
+            <span class="text-muted text-bold">{{ review.customerName }}</span>
+            <sup class="rating-sup">{{ review.rating }}</sup>
             <p>
               {{ review.customerReview }}
             </p>
           </div>
         </div>
       </div>
-      <div class="c-tab">
-        <button
-          class="accordion"
-          onclick="openProductAccordion(event , 'returns')"
-          id="returns"
-        >
-          Shipping and Returns
-        </button>
-        <div class="c-tab__content">
-          <h4>Returns Policy</h4>
+
+      <button class="accordion" onclick="openAccordion(event)">
+        Shipping and Returns
+      </button>
+      <div class="panel mb-2">
+        <div class="panel-box">
+          <p class="text-bold text-muted panel-header">Returns Policy</p>
           <p>
             You may return most new, unopened items within 30 days of delivery
             for a full refund. We'll also pay the return shipping costs if the
@@ -90,7 +67,7 @@
             email care.ng@oraimo.com and attach your order ID and your issue. If
             the refund is approved we will notify you via e-mail.
           </p>
-          <h4>Shipping</h4>
+          <p class="panel-header text-bold text-muted">Shipping</p>
           <p>
             We can ship to virtually any address in Nigeria. Note that if you
             can build an order at the checkout process that's mean we cant
@@ -159,6 +136,7 @@
     </div>
   </div>
 </div>
+
 <!--
   <section class="my-2">
     <div class="container">
@@ -173,33 +151,3 @@
   </section>
 
 -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    var myTabs = tabs({
-      el: "#tabs",
-      tabNavigationLinks: ".c-tabs-nav__link",
-      tabContentContainers: ".c-tab",
-    });
-
-    myTabs.init();
-
-    const range = document.getElementById("range"),
-      rangeV = document.getElementById("rangeV"),
-      setValue = () => {
-        const newValue = Number(
-            ((range.value - range.min) * 100) / (range.max - range.min)
-          ),
-          newPosition = 10 - newValue * 0.2;
-        rangeV.innerHTML = `<span>${range.value}</span>`;
-        rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-      };
-    document.addEventListener("DOMContentLoaded", setValue);
-    range.addEventListener("input", setValue);
-
-    var span = document.getElementsByClassName("close-modal")[0];
-    span.onclick = function () {
-      modal.style.display = "none";
-      modal = "";
-    };
-  });
-</script>

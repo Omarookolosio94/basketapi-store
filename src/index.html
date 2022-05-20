@@ -27,43 +27,10 @@
     ></script>
 
     <script src="assets/js/custom-select.js"></script>
-    <script src="assets/js/tabs.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/index.js"></script>
   </head>
   <body>
     <app-root></app-root>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var myTabs = tabs({
-          el: "#tabs",
-          tabNavigationLinks: ".c-tabs-nav__link",
-          tabContentContainers: ".c-tab",
-        });
-
-        myTabs.init();
-
-        const range = document.getElementById("range"),
-          rangeV = document.getElementById("rangeV"),
-          setValue = () => {
-            const newValue = Number(
-                ((range.value - range.min) * 100) / (range.max - range.min)
-              ),
-              newPosition = 10 - newValue * 0.2;
-            rangeV.innerHTML = `<span>${range.value}</span>`;
-            rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-          };
-        document.addEventListener("DOMContentLoaded", setValue);
-        range.addEventListener("input", setValue);
-
-        var span = document.getElementsByClassName("close-modal")[0];
-        span.onclick = function () {
-          modal.style.display = "none";
-          modal = "";
-        };
-      });
-    </script>
-
   </body>
 </html>

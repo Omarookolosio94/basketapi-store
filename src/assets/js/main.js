@@ -21,8 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
       : "light");
   if (storedTheme)
     document.documentElement.setAttribute("data-theme", storedTheme);
-
-
 });
 
 function scrollTopAnimated() {
@@ -125,5 +123,56 @@ function openProductAccordion(e, modalId) {
       panel.style.maxHeight = panel.scrollHeight + 500 + "px";
       panel.style.padding = "1.5rem";
     }
+  }
+}
+/*
+function openAccordion(e) {
+  var accordion = e.target;
+
+  accordion.classList.toggle("active");
+
+  var panel = accordion.nextElementSibling;
+
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+}
+*/
+
+function openAccordion(e) {
+  var accordion = document.getElementsByClassName("accordion");
+  var panelList = document.getElementsByClassName("panel");
+
+  for (var i = 0; i < accordion.length; i++) {
+    accordion[i].onclick = function () {
+      var notActive = !this.classList.contains("active");
+      showHideAccordion(accordion, "active", "remove");
+      hidePanel(panelList);
+
+      if (notActive) {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      }
+    };
+  }
+}
+
+function showHideAccordion(els, className, fnName) {
+  for (var i = 0; i < els.length; i++) {
+    els[i].classList[fnName](className);
+  }
+}
+
+function hidePanel(els) {
+  for (var i = 0; i < els.length; i++) {
+    els[i].style.maxHeight = null;
   }
 }
