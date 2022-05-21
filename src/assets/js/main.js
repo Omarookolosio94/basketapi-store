@@ -67,6 +67,7 @@ function closeModal(e, modalId) {
   modal = "";
 }
 
+/*
 function RedirectToShipping(e) {
   e.preventDefault();
   window.location.href = "./Shipping.html";
@@ -86,7 +87,6 @@ function AddToCart(e) {
 
   setAlert("Item Added To Cart", "alert-success");
 }
-
 function setAlert(msg, type) {
   var alert = document.getElementById("alert-box");
   var text = document.getElementById("alert-msg");
@@ -100,6 +100,7 @@ function setAlert(msg, type) {
     alert.classList.remove("show");
   }, 3000);
 }
+*/
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -125,21 +126,6 @@ function openProductAccordion(e, modalId) {
     }
   }
 }
-/*
-function openAccordion(e) {
-  var accordion = e.target;
-
-  accordion.classList.toggle("active");
-
-  var panel = accordion.nextElementSibling;
-
-  if (panel.style.maxHeight) {
-    panel.style.maxHeight = null;
-  } else {
-    panel.style.maxHeight = panel.scrollHeight + "px";
-  }
-}
-*/
 
 function openAccordion(e) {
   var accordion = document.getElementsByClassName("accordion");
@@ -175,4 +161,20 @@ function hidePanel(els) {
   for (var i = 0; i < els.length; i++) {
     els[i].style.maxHeight = null;
   }
+}
+
+function closeAlert() {
+  var alert = document.getElementById("alert-box");
+
+  alert.classList.remove("show");
+}
+
+function showAlert() {
+  var alert = document.getElementById("alert-box");
+
+  alert.classList.add("show");
+
+  setTimeout(() => {
+    alert.classList.remove("show");
+  }, 4000);
 }

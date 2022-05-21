@@ -23,7 +23,6 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 
-
 const navRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },

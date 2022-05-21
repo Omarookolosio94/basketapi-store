@@ -8,6 +8,14 @@ export interface Review {
   dateAdded: Date;
 }
 
+export interface ReviewItem
+{
+  customerName: string;
+  customerReview: string;
+  rating: number;
+  email: string;
+}
+
 export interface ProductGallery {
   productImageID: string;
   productImage: string;

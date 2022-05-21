@@ -4,6 +4,7 @@ import { Cart } from 'src/app/interfaces/CartModel';
 import { Product } from 'src/app/interfaces/ProductModel';
 import { BasketapiService } from 'src/app/services/basketapi.service';
 import { CartService } from 'src/app/services/cart.service';
+import { displayNotification } from 'src/app/utilities/helpers';
 declare var $: any;
 
 @Component({
@@ -91,6 +92,10 @@ export class CartComponent implements OnInit {
       this.cartService.setCartCount();
       this.cart = this.cartService.getCart();
       this.CalculateCartTotal();
+
+      displayNotification(
+        'Item removed from cart'
+      );
       return;
     }
   }
