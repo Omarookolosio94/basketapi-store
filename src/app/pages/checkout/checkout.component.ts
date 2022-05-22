@@ -72,7 +72,7 @@ export class CheckoutComponent implements OnInit {
       return;
     }
 
-    if (!isEmail(customerEmail)) {
+    if (!isEmail(customerEmail.trim())) {
       var emailError: any = document.getElementById('formEmailError');
 
       emailError.classList.add('show');

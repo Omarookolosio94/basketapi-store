@@ -84,7 +84,7 @@ export class ProductComponent implements OnInit {
       this.reviewForm.value.email != null &&
       this.reviewForm.value.email != ''
     ) {
-      if (!isEmail(this.reviewForm.value.email)) {
+      if (!isEmail(this.reviewForm.value.email?.trim())) {
         var emailError: any = document.getElementById('formEmailError');
 
         emailError.classList.add('show');
