@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ReviewItem } from '../interfaces/ProductModel';
 import { GeneralResponse } from '../interfaces/ResponseModel';
 
 var httpOptions = {
@@ -28,7 +29,9 @@ export class BasketapiService {
     );
   }
 
-  async GetProductsAsync(productID: number = 0): Promise<Observable<GeneralResponse>> {
+  async GetProductsAsync(
+    productID: number = 0
+  ): Promise<Observable<GeneralResponse>> {
     return this.http.get<GeneralResponse>(
       `${this.basketapi}/api/v1/products?productID=${productID}`
     );
@@ -46,6 +49,13 @@ export class BasketapiService {
   GetRandomProducts(count: number = 1): Observable<GeneralResponse> {
     return this.http.get<GeneralResponse>(
       `${this.basketapi}/api/v1/products/random?count=${count}`
+    );
+  }
+
+  AddReview(review: ReviewItem): Observable<GeneralResponse> {
+    return this.http.put<GeneralResponse>(
+      `${this.basketapi}/api/v1/products/review`,
+      review
     );
   }
 }

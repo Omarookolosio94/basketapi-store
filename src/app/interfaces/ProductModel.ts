@@ -12,8 +12,9 @@ export interface ReviewItem
 {
   customerName: string;
   customerReview: string;
-  rating: number;
   email: string;
+  rating: number;
+  productID: number;
 }
 
 export interface ProductGallery {

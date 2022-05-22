@@ -14,7 +14,7 @@
       <div class="panel mb-2">
         <div class="panel-box">
           <p>
-            {{product.description ?  product?.description: product?.summary }}
+            {{ product.description ? product?.description : product?.summary }}
           </p>
         </div>
       </div>
@@ -92,7 +92,7 @@
   </div>
 </section>
 
-<div id="review-modal" class="modal">
+<div id="review-modal" class="modal" *ngIf="product">
   <div class="modal-content">
     <div class="modal-header">
       <p class="text-capitalize text-bold">Rate Product</p>
@@ -101,28 +101,82 @@
       </p>
     </div>
     <div class="modal-body">
-      <form action="" class="form modal-form">
+      <form
+        [formGroup]="reviewForm"
+        (ngSubmit)="AddReview()"
+        class="form modal-form"
+      >
+        <input
+          type="text"
+          hidden
+          formControlName="productID"
+          [(ngModel)]="product.productID"
+        />
+
         <div class="input-group">
-          <label for="">Your Rating</label>
-          <div class="range-wrap">
-            <div class="range-value" id="rangeV"></div>
-            <input id="range" type="range" min="1" max="5" value="5" step="1" />
+          <label for="customerName" class="required text-bold text-muted"
+            >Name</label
+          >
+          <input type="text" formControlName="customerName" />
+          <small class="danger form-error" id="formNameError"
+            >Name is required</small
+          >
+        </div>
+
+        <div class="input-group">
+          <label for="rating" class="text-bold text-muted required"
+            >Choose A Rating</label
+          >
+          <div class="rating">
+            <input
+              type="radio"
+              formControlName="rating"
+              value="5"
+              id="5"
+            /><label for="5">☆</label>
+            <input
+              type="radio"
+              formControlName="rating"
+              value="4"
+              id="4"
+            /><label for="4">☆</label>
+            <input
+              type="radio"
+              formControlName="rating"
+              value="3"
+              id="3"
+            /><label for="3">☆</label>
+            <input
+              type="radio"
+              formControlName="rating"
+              value="2"
+              id="2"
+            /><label for="2">☆</label>
+            <input
+              type="radio"
+              formControlName="rating"
+              value="1"
+              id="1"
+            /><label for="1">☆</label>
           </div>
         </div>
+
         <div class="input-group">
-          <label for="">Your Name</label>
-          <input name="name" type="text" placeholder="John Doe" />
+          <label for="email" class="optional text-bold text-muted">Email</label>
+          <input type="text" formControlName="email" />
+          <small class="danger form-error" id="formEmailError"
+            >Please input a valid email</small
+          >
         </div>
         <div class="input-group">
-          <label for="">Your Email</label>
-          <input name="email" type="text" placeholder="JohnDoe@gmail.com" />
+          <label for="customerReview" class="optional text-bold text-muted"
+            >Review</label
+          >
+          <textarea type="text" formControlName="customerReview"></textarea>
         </div>
-        <div class="input-group">
-          <label for="">Review Content</label>
-          <textarea name="name" type="text" placeholder=""></textarea>
-        </div>
+
         <div class="modal-btn-box">
-          <button class="btn btn-sm btn-primary modal-btn">
+          <button type="submit" class="btn btn-sm btn-primary modal-btn">
             Submit Your Reviews
           </button>
           <button
