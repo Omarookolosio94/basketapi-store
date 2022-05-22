@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../interfaces/CartModel';
 import { Product } from '../interfaces/ProductModel';
-import { BasketapiService } from './basketapi.service';
 declare var $: any;
 
 @Injectable({

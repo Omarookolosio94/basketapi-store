@@ -26,7 +26,7 @@
         <div class="panel-box">
           <div class="review-btn">
             <button
-              class="btn btn-sm btn-primary mb-1"
+              class="btn btn-sm btn-warning mb-1"
               onclick="openModal('review-modal')"
             >
               Add Review
@@ -176,14 +176,14 @@
         </div>
 
         <div class="modal-btn-box">
-          <button type="submit" class="btn btn-sm btn-primary modal-btn">
-            Submit Your Reviews
-          </button>
           <button
-            class="btn btn-sm btn-warning mx-1 modal-btn"
+            class="btn btn-sm btn-warning outline mx-1 modal-btn"
             onclick="closeModal(event , 'review-modal')"
           >
             Close
+          </button>
+          <button type="submit" class="btn btn-sm btn-primary modal-btn">
+            Submit Your Reviews
           </button>
         </div>
       </form>

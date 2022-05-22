@@ -118,7 +118,6 @@ export class ProductComponent implements OnInit {
               productID: review.productID,
             });
 
-            console.log(this.reviewForm.value);
           } else {
             alert(response.message);
           }

@@ -8,19 +8,19 @@
             <i class="fa fa-check"></i>
           </div>
           <div class="order-number">
-            <span>Order #2121</span>
+            <span>Order Confirmation</span>
             <p>Thank You Oghenemaro!</p>
           </div>
         </div>
         <div class="order-details-box">
           <div class="order-detail">
             <h1 class="order-header text-capitalize">
-              Your Order is confirmed
+              Your Order is has been placed
             </h1>
             <p>
-              Thanks for ordering from XChange, we will send out your parcel as
-              soon as possible. Your order will be delivered in 4-6 business
-              days. Kindly wait for it!
+              Thanks for ordering from us, we will send out your parcel as soon
+              as possible. Your order will be delivered in 4-6 business days.
+              Kindly wait for it!
             </p>
           </div>
           <div class="order-detail">
@@ -29,14 +29,19 @@
           </div>
           <div class="order-detail">
             <h1 class="order-header text-capitalize">Delivery Address</h1>
-            <p>Oghenemaro Okolosio,
-            48 Vaughan Street Ebute Metta Lagos, Nigeria</p>
+            <p>
+              {{ orderComplete?.customerFirstName }},
+              {{ orderComplete?.shippingAddress }}
+            </p>
           </div>
           <div class="order-address-box">
             <div class="order-address">
               <div class="order-group">
                 <h1 class="order-header">Contact information</h1>
-                <p>omarookolosio94@gmail.com , +234 701 900 0000
+                <p>
+                  {{ orderComplete?.customerEmail }},
+                  {{ orderComplete?.customerPhoneNumber }}
+                </p>
               </div>
 
               <div class="order-group">
@@ -50,7 +55,9 @@
                 <h1 class="order-header">Payment method</h1>
                 <ul class="order-payment-options">
                   <li class="order-payment">
-                    <span class="">Cash on Delivery (COD) - ₦9,500.00</span>
+                    <span class=""
+                      >Pay On Delivery(POD) - &#8358;{{ cartTotal | number }}</span
+                    >
                   </li>
                 </ul>
               </div>
@@ -76,27 +83,25 @@
 <div id="checkout-modal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <p class="text-capitalize text-bold">Order Summary</p>
+      <p class="text-capitalize text-bold">Shopping Cart</p>
       <p class="close" onclick="closeModal(event , 'checkout-modal')">
         <i class="fas fa-times close-modal"></i>
       </p>
     </div>
     <div class="modal-body">
       <div class="shipping-items mb-2">
-        <!--
         <div class="summary-header mb-1">
           <p class="text-bold text-muted">Order</p>
-            <a routerLink="/cart" class="btn btn-warning outline btn-xsm">Edit</a>
-          </div>
-        -->
+        </div>
         <div class="cart-summary">
-          <app-cart-summary></app-cart-summary>
-          <app-cart-summary></app-cart-summary>
-          <app-cart-summary></app-cart-summary>
+          <app-cart-summary
+            *ngFor="let product of orderComplete?.cartComplete"
+            [cart]="product"
+          ></app-cart-summary>
         </div>
         <div class="checkout-box summary">
           <p class="text-bold text-muted">Total</p>
-          <p class="text-bold text-muted">&#8358; 200,000</p>
+          <p class="text-bold text-muted">&#8358; {{ cartTotal | number }}</p>
         </div>
         <div class="modal-btn-box">
           <button

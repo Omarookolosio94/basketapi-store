@@ -1877,17 +1877,17 @@ table th {
 }
 
 .accordion {
-  color: var(--white);
-  background-color: var(--blue-hover);
-  border-top-right-radius: var(--border-radius);
-  border-top-left-radius: var(--border-radius);
+  color: var(--black);
+  border: 1px solid var(--border);
+  border-bottom:2px solid var(--success);
+  background-color: var(--white);
   cursor: pointer;
   padding: 20px;
   width: 100%;
   text-align: left;
-  border: none;
   outline: none;
   transition: 0.4s;
+  font-weight: bold;
 }
 
 .panel {
@@ -1900,7 +1900,7 @@ table th {
 }
 
 [data-theme="dark"] .accordion {
-  color: var(--black);
+  background-color: var(--primary-hover);
 }
 
 .panel .panel-box {

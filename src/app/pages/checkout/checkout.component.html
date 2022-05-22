@@ -29,29 +29,44 @@
         </div>
       </div>
       <div class="shipping-info">
-        <form action="" class="form shipping-form">
+        <form
+          [formGroup]="orderForm"
+          (ngSubmit)="PlaceOrder()"
+          class="form shipping-form"
+        >
           <div class="input-group">
-            <label for="email">What's your Email Address?</label>
-            <input type="text" name="email" placeholder="Enter email" />
-            <small class="danger">email is required</small>
+            <label for="customerName" class="text-bold text-muted required">What's your name?</label>
+            <small class="text-muted">First name followed by surname E.G Mary Chidi</small>
+            <input type="text" formControlName="customerName" />
+            <small class="danger form-error" id="formNameError"
+            >Please include your surname</small
+          >
           </div>
           <div class="input-group">
-            <label for="phone">What's your Phone Number</label>
-            <input type="text" name="phone" placeholder="Enter phone number" />
-            <small class="success">number passed is valid</small>
+            <label for="customerEmail" class="text-bold text-muted required"
+              >What's your Email Address?</label
+            >
+            <input type="text" formControlName="customerEmail" />
+            <small class="danger form-error" id="formEmailError"
+              >Please input a valid email</small
+            >
           </div>
           <div class="input-group">
-            <label for="lastName">What's your name?</label>
-            <input type="text" name="lastName" placeholder="Enter your name" />
+            <label for="customerPhoneNumber" class="text-bold text-muted required"
+              >What's your Phone Number</label
+            >
+            <small class="text-muted">11 Digits phone number E.G 07019000000</small>
+            <input type="text" formControlName="customerPhoneNumber" />
+            <small class="danger form-error" id="formPhoneNumberError">Please input a valid phone number</small>
           </div>
+
           <div class="input-group">
-            <label for="address">What's the delivery address</label>
-            <input
-              type="text"
-              name="address"
-              placeholder="Enter your address"
-            />
-            <small class="text-muted">Address should include No. Street Name City and State. E.G 48 Vaughan Street Ebute Metta Lagos</small>
+            <label for="shippingAddress" class="text-bold text-muted required">What's the delivery address</label>
+            <small class="text-muted"
+              >* Address should include No. Street Name City and State. E.G 48
+              Vaughan Street Ebute Metta Lagos</small
+            >
+            <input type="text" formControlName="shippingAddress" />
           </div>
           <div class="form-btn mt-1">
             <button class="btn btn-success btn-sm btn-full mr-1 mb-1">

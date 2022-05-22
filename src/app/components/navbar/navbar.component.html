@@ -6,7 +6,7 @@
         <!--
           <img src="assets/img/basketicon.svg" alt="" />
         -->
-        <a routerLink="/home" class="logo-text"> Headphones </a>
+        <a routerLink="/home" class="logo-text"> BasketStore </a>
       </div>
 
       <!-- Search Bar -->
@@ -47,7 +47,7 @@
           <div class="nav-btn" onclick="closeNav()">
             <button class="close-btn btn btn-sm btn-warning">Close</button>
           </div>
-          <a class="links" routerLink="/home">
+          <a class="links" routerLink="/home" onclick="closeNav()">
             <span>Home</span>
           </a>
           <!--
@@ -55,7 +55,7 @@
               <span>New Arrivals</span>
             </a>
           -->
-          <a class="links" routerLink="/cart">
+          <a class="links" onclick="closeNav()" routerLink="/cart">
             <span>Cart</span>
             <span id="cart-count-nav" class="cart-badge blue-badge">3</span>
           </a>

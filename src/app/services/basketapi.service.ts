@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Order } from '../interfaces/order.interface';
 import { ReviewItem } from '../interfaces/ProductModel';
 import { GeneralResponse } from '../interfaces/ResponseModel';
 
@@ -56,6 +57,13 @@ export class BasketapiService {
     return this.http.put<GeneralResponse>(
       `${this.basketapi}/api/v1/products/review`,
       review
+    );
+  }
+
+  PlaceOrder(order: Order): Observable<GeneralResponse> {
+    return this.http.post<GeneralResponse>(
+      `${this.basketapi}/api/v1/orders`,
+      order
     );
   }
 }
