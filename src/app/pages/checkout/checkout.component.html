@@ -35,12 +35,16 @@
           class="form shipping-form"
         >
           <div class="input-group">
-            <label for="customerName" class="text-bold text-muted required">What's your name?</label>
-            <small class="text-muted">First name followed by surname E.G Mary Chidi</small>
+            <label for="customerName" class="text-bold text-muted required"
+              >What's your name?</label
+            >
+            <small class="text-muted"
+              >First name followed by surname E.G Mary Chidi</small
+            >
             <input type="text" formControlName="customerName" />
             <small class="danger form-error" id="formNameError"
-            >Please include your surname</small
-          >
+              >Please include your surname</small
+            >
           </div>
           <div class="input-group">
             <label for="customerEmail" class="text-bold text-muted required"
@@ -52,16 +56,24 @@
             >
           </div>
           <div class="input-group">
-            <label for="customerPhoneNumber" class="text-bold text-muted required"
+            <label
+              for="customerPhoneNumber"
+              class="text-bold text-muted required"
               >What's your Phone Number</label
             >
-            <small class="text-muted">11 Digits phone number E.G 07019000000</small>
+            <small class="text-muted"
+              >11 Digits phone number E.G 07019000000</small
+            >
             <input type="text" formControlName="customerPhoneNumber" />
-            <small class="danger form-error" id="formPhoneNumberError">Please input a valid phone number</small>
+            <small class="danger form-error" id="formPhoneNumberError"
+              >Please input a valid phone number</small
+            >
           </div>
 
           <div class="input-group">
-            <label for="shippingAddress" class="text-bold text-muted required">What's the delivery address</label>
+            <label for="shippingAddress" class="text-bold text-muted required"
+              >What's the delivery address</label
+            >
             <small class="text-muted"
               >* Address should include No. Street Name City and State. E.G 48
               Vaughan Street Ebute Metta Lagos</small
@@ -69,8 +81,18 @@
             <input type="text" formControlName="shippingAddress" />
           </div>
           <div class="form-btn mt-1">
-            <button class="btn btn-success btn-sm btn-full mr-1 mb-1">
+            <button
+              type="submit"
+              class="btn btn-success btn-sm btn-full mr-1 mb-1"
+            >
               Proceed to Order
+            </button>
+            <button
+              type="button"
+              (click)="PayWithStanbic()"
+              class="btn btn-primary btn-sm btn-full mr-1 mb-1"
+            >
+              Pay with stanbic
             </button>
             <button
               routerLink="/cart"

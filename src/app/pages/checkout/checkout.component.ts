@@ -11,6 +11,7 @@ import { BasketapiService } from 'src/app/services/basketapi.service';
 import { CartService } from 'src/app/services/cart.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { isEmail } from 'src/app/utilities/helpers';
+declare var EzcashbnplPop: any;
 
 @Component({
   selector: 'app-checkout',
@@ -176,5 +177,91 @@ export class CheckoutComponent implements OnInit {
         return;
       }
     );
+  }
+
+  PayWithStanbic() {
+    var customerName = this.orderForm.value.customerName;
+    var customerEmail = this.orderForm.value.customerEmail;
+    var customerPhoneNumber = this.orderForm.value.customerPhoneNumber;
+    var shippingAddress = this.orderForm.value.shippingAddress;
+
+    if (
+      customerEmail == '' ||
+      customerEmail == null ||
+      customerName == '' ||
+      customerName == null ||
+      customerPhoneNumber == '' ||
+      customerPhoneNumber == null ||
+      shippingAddress == '' ||
+      shippingAddress == null
+    ) {
+      alert('Please pass in all required information');
+      return;
+    }
+
+    if (!isEmail(customerEmail.trim())) {
+      var emailError: any = document.getElementById('formEmailError');
+
+      emailError.classList.add('show');
+
+      setTimeout(() => {
+        emailError.classList.remove(`show`);
+
+        return;
+      }, 4000);
+      return;
+    }
+
+    if (!customerPhoneNumber.match(this.phoneNoRegex)) {
+      var phoneNumberError: any = document.getElementById(
+        'formPhoneNumberError'
+      );
+
+      phoneNumberError.classList.add('show');
+
+      setTimeout(() => {
+        phoneNumberError.classList.remove(`show`);
+
+        return;
+      }, 4000);
+      return;
+    }
+
+    var names = customerName.trim().split(' ');
+
+    var fullnames = names.filter((name: any) => name.length > 0);
+
+    if (names.length < 2) {
+      var nameError: any = document.getElementById('formNameError');
+
+      nameError.classList.add('show');
+
+      setTimeout(() => {
+        nameError.classList.remove(`show`);
+
+        return;
+      }, 4000);
+      return;
+    }
+
+    const handler = EzcashbnplPop.setup({
+      data: {
+        secretkey: 'L9qG6XVDSxrn8wBKNQ4z',
+        instantBuyAmount: this.cartTotal,
+        summary: '',
+      },
+      onClose: console.log('closed iframe'),
+      callback: this.OnPaySuccess,
+    });
+
+    handler.openIframe();
+  }
+
+  OnPaySuccess(data: any) {
+    console.log(data);
+    if (data.success) {
+      this.PlaceOrder();
+    }
+    return;
   }
 }
