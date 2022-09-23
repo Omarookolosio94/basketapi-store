@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ReviewItem } from 'src/app/interfaces/ProductModel';
 import { BasketapiService } from 'src/app/services/basketapi.service';
@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
     customerName: '',
     customerReview: '',
     email: '',
-    rating: new FormControl('5'),
+    rating: new UntypedFormControl('5'),
     productID: 0,
   });
 
@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
     private apiService: BasketapiService,
     private cartService: CartService,
     private activatedRoute: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {}
 
   ngOnInit(): void {

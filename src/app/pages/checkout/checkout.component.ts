@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/interfaces/CartModel';
 import {
@@ -34,7 +34,7 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private apiService: BasketapiService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: Router,
     private navigation: NavigationService
   ) {}

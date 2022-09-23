@@ -1,9 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Cart } from 'src/app/interfaces/CartModel';
-import { Product } from 'src/app/interfaces/ProductModel';
-import { BasketapiService } from 'src/app/services/basketapi.service';
-import { CartService } from 'src/app/services/cart.service';
 import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
